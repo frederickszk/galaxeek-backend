@@ -11,11 +11,11 @@ class UserSerializer(serializers.ModelSerializer):
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = ['id', 'owner', 'name', 'type']
+        fields = ['id', 'user_id', 'name', 'type']
 
 
 class PositionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Position
-        fields = ['id', 'device', 'longitude', 'latitude', 'time']
+        fields = ['id', 'device_id', 'longitude', 'latitude', 'time']
 

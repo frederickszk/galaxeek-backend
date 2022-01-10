@@ -9,15 +9,15 @@ class User(models.Model):
 
 
 class Device(models.Model):
-    # owner_id = models.BigIntegerField()
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.BigIntegerField()
+    # owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=50)
 
 
 class Position(models.Model):
-    # device_id = models.BigIntegerField()
-    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    device_id = models.BigIntegerField()
+    # device = models.ForeignKey(Device, on_delete=models.CASCADE)
     longitude = models.FloatField()
     latitude = models.FloatField()
     time = models.DateTimeField(auto_now_add=True)

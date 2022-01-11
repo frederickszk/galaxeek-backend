@@ -27,8 +27,8 @@ def positions(request):
 
 @api_view(['GET'])
 def action(request):
-    ak = "P9QYYZB3SBOIIG64IUET"
-    sk = "fOa9H8Zte5bPd1nV4Gq7cv13hIsS2sM6cJe1JQYs"
+    ak = "O675URS3YGS85V3JHROC"
+    sk = "vA51D8QI0IkpadHEV5hENgFjFfRYGty7GPVfH9XI"
     credentials = BasicCredentials(ak, sk)
     client = IoTDAClient.new_builder() \
         .with_credentials(credentials) \
@@ -48,8 +48,8 @@ def action(request):
 
         request_iot.device_id = device_id_iot
         request_iot.body = DeviceCommandRequest(
-            service_id="basic_data",
-            command_name="command",
+            # service_id="basic_data",
+            # command_name="command",
             paras=paras
         )
         #

@@ -13,6 +13,13 @@
 在`serializer.save()`调用之前如果要调用`serializer.data`会报错。因为保存之后data中会多出主键`id`。
 需要改为使用`serializer.validated_data`来提前获取数据进行相关操作。
 
+## 华为云IOTDA Python SDK相关
+- 下发设备命令
+
+`DeviceCommandRequest`的构造参数`paras`需要输入一个字典变量，而不是转换后的JSON字符串。否则
+会导致报错：MQTT接口参数错误。推测是该类自带了一个JSON的render，
+自动对输入的字典转换为JSON格式。而官网的API Explorer中生成的代码是输入一个JSON字符串，很有误导性。
+
 
 # Reference
 - [全栈开发工作流](https://zhuanlan.zhihu.com/p/363822302)

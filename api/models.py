@@ -10,6 +10,7 @@ class User(models.Model):
 
 class Device(models.Model):
     user_id = models.BigIntegerField()
+    device_id_iot = models.CharField(max_length=100)
     # owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=50)

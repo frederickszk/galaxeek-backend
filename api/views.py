@@ -60,6 +60,26 @@ def devices(request):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET', 'POST'])
+def positions(request):
+    if request.method == 'GET':
+        try:
+            device_id = request.GET.get('device_id')
+            positions = Position.objects.filter(device_id=device_id)
+            serializer = PositionSerializer(positions, many=True)
+            return Response(serializer.data)
+        except Exception:
+            return Response({"Error message": "Please query with device_id."},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'POST':
+        serializer = PositionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 

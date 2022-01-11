@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = ['id', 'user_id', 'name', 'type']
+        fields = ['id', 'user_id', 'device_id_iot', 'name', 'type']
 
 
 class PositionSerializer(serializers.ModelSerializer):

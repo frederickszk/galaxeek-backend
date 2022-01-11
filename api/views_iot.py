@@ -16,6 +16,7 @@ from huaweicloudsdkiotda.v5 import *
 @api_view(['POST'])
 def positions(request):
     if request.method == 'POST':
+        print(request.data)
         data_iot = request.data['notify_data']['body']['services'][0]["properties"]
         serializer = PositionSerializer(data=data_iot)
         if serializer.is_valid():

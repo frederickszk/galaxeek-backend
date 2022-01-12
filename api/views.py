@@ -65,9 +65,15 @@ def positions(request):
     if request.method == 'GET':
         try:
             device_id = request.GET.get('device_id')
+            history = request.GET.get('history')
             positions = Position.objects.filter(device_id=device_id)
-            serializer = PositionSerializer(positions, many=True)
-            return Response(serializer.data)
+            if history == "true":
+                serializer = PositionSerializer(positions, many=True)
+                return Response(serializer.data)
+            else:
+                serializer = PositionSerializer(positions.latest('time'))
+                return Response(serializer.data)
+
         except Exception:
             return Response({"Error message": "Please query with device_id."},
                             status=status.HTTP_400_BAD_REQUEST)
